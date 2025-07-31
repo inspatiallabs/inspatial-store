@@ -1,0 +1,18 @@
+{
+  "imports": {
+    "@inspatial/run": "jsr:@inspatial/run@^0.4.5"
+  },
+
+  "compilerOptions": {
+    "lib": ["deno.ns", "dom", "dom.iterable"],
+    "jsxFactory": "R.c",
+    "jsxFragmentFactory": "R.f",
+    "jsxImportSource": "@inspatial/run",
+    "jsx": "react-jsx"
+  },
+  "tasks": {
+    "build": "deno bundle --platform browser --output dist/main.js main.ts",
+    "build-dev": "deno bundle --watch --platform browser --output dist/main.js main.ts",
+    "run": "deno run --allow-net --allow-read jsr:@std/http@1/file-server --port 6310 dist/"
+  }
+}

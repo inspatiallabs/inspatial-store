@@ -1,10 +1,9 @@
-import "./kit.css";
-import { createRenderer } from "@inspatial/run/renderer";
-import { App } from "../app/window/flat.tsx";
+import { createRenderer } from "@inspatial/run";
+import { App } from "./src/App.tsx";
 
 // 1. Create InSpatial renderer
 createRenderer({
-  mode: "auto",
+  mode: "browser",
   debug: "verbose",
 }).then((InSpatial) => {
   InSpatial.render(document.getElementById("app"), App);

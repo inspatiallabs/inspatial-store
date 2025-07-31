@@ -8,8 +8,12 @@
     "clean": "rm -rf node_modules && rm -rf deno.lock && rm -rf dist"
   },
   "compilerOptions": {
-    "lib": ["ES2022", "DOM", "DOM.Iterable"],
-    "moduleResolution": "bundler"
+    "lib": ["ES2022", "DOM", "DOM.Iterable", "deno.ns"],
+    "moduleResolution": "bundler",
+    "jsxFactory": "R.c",
+    "jsxFragmentFactory": "R.f",
+    "jsxImportSource": "@inspatial/run",
+    "jsx": "react-jsx"
   },
   "imports": {
     "@inspatial/run": "jsr:@inspatial/run@^0.4.5",
