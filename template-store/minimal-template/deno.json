@@ -1,18 +1,27 @@
 {
-  "imports": {
-    "@inspatial/run": "jsr:@inspatial/run@^0.4.5"
-  },
-
-  "compilerOptions": {
-    "lib": ["deno.ns", "dom", "dom.iterable"],
-    "jsxFactory": "R.c",
-    "jsxFragmentFactory": "R.f",
-    "jsxImportSource": "@inspatial/run",
-    "jsx": "react-jsx"
+  "inspatial": {
+    "serve": {
+      "build": {
+        "css": {
+          "engine": "iss",
+          "input": "./src/config/app.css",
+          "output": "./dist/kit.css",
+          "contentGlobs": ["src/**/*.{ts,tsx,js,jsx}"]
+        }
+      }
+    }
   },
   "tasks": {
-    "build": "deno bundle --platform browser --output dist/main.js main.ts",
-    "build-dev": "deno bundle --watch --platform browser --output dist/main.js main.ts",
-    "run": "deno run --allow-net --allow-read jsr:@std/http@1/file-server --port 6310 dist/"
+    "serve": "deno run --allow-net --allow-read --allow-write --allow-env --allow-run src/config/render.ts",
+    "build": "deno bundle --platform=browser --output=dist/bundle.js --sourcemap src/config/render.ts",
+    "clean": "rm -rf dist && rm -rf node_modules && rm -rf deno.lock && rm -rf src/app/.inroute && rm -f src/types/extension-trigger-types.generated.d.ts"
+  },
+  "imports": {
+    "@inspatial/kit": "jsr:@inspatial/kit@^0.7.2"
+  },
+  "compilerOptions": {
+    "lib": ["deno.ns", "dom", "dom.iterable"],
+    "jsxImportSource": "@inspatial/kit",
+    "jsx": "react-jsx"
   }
 }
