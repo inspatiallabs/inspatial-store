@@ -1,4 +1,4 @@
-import { createSignal, $ } from "@inspatial/kit/signal";
+import { createState, $ } from "@inspatial/kit/state";
 import { View, YStack } from "@inspatial/kit/structure";
 import { Text, List, Button } from "@inspatial/kit/widget";
 
@@ -10,10 +10,10 @@ export function Counter() {
   }
 
   /*################################(State)################################*/
-  const count = createSignal(0);
+  const count = createState(0);
   const message = $(() => `Count is: ${count.value}`);
 
-  const entries = createSignal<EntryProps[]>([
+  const entries = createState<EntryProps[]>([
     { id: 1, name: "Hot reload test working Base! 🔥" },
     { id: 2, name: "DOM renderer is running 🦵" },
     { id: 3, name: "Interactivity is a check ✅" },
